@@ -1,9 +1,9 @@
 /**
  * printInvalidAlarms will display a message if No alarms have been Added, or if an Alarm cannot be set
- * 
+ *
  * @param {Array} input - an array of containing all the values from standard input
  * @param {Array} alarmsToBeSet - all the alarms that need to be set through setTimeout()
- * 
+ *
  */
 
 
@@ -19,20 +19,20 @@ const printInvalidAlarms = (input) => {
     process.exit(0);
   }
 
-  for (let i of userInput){
+  for (let i of userInput) {
     //converting a string that is not a number will return NaN -> Number('hello') @returns NaN
     if (Number.isNaN(Number(i))) console.log(`Cannot set alarm for '${i}' since it is not a number!`);
     
-    if (Number(i) < 0) console.log(`Cannot set alarm for '${i}' since it is a negative number! `)
+    if (Number(i) < 0) console.log(`Cannot set alarm for '${i}' since it is a negative number! `);
   }
-}
+};
 
 const printValidAlarms = (alarmsToBeSet) => {
   console.log(`Setting an Alarm for: ${alarmsToBeSet.join(', ')}`);
-}
+};
 
-//Edge Case 3: Input has to be a Number 
-//Slice will take the input arguments, and convert each element to a number, then filter the elements that are only Integer numbers 
+//Edge Case 3: Input has to be a Number
+//Slice will take the input arguments, and convert each element to a number, then filter the elements that are only Integer numbers
 const alarmsToBeSet = userInput.map(elem => Number(elem)).filter(elem => Number.isInteger(elem) && elem > 0);
 const findMaxTime = Math.max(...alarmsToBeSet); //Math.max will return NaN if NaN is found in the array, hence the filter
 
